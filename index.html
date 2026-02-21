@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Villaceran | Official BSIT Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { accent: '#ff3e00' },
+                    animation: { 'marquee': 'marquee 30s linear infinite' },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Smooth Transitions */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        body { font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, .sync { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+
+        /* Theme Styling */
+        .dark body { background: #000; color: #fff; }
+        body { background: #f8fafc; color: #0f172a; }
+
+        /* Navigation Links */
+        .nav-link { 
+            font-size: 10px; font-weight: 700; letter-spacing: 0.2em; 
+            text-transform: uppercase; position: relative; cursor: pointer;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: #ff3e00; transition: 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Image Ratio (1000x900) */
+        .img-container {
+            width: 100%; max-width: 500px; aspect-ratio: 1000 / 900;
+            overflow: hidden; border: 1px solid rgba(255, 62, 0, 0.3);
+            filter: grayscale(1); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .img-container:hover { filter: grayscale(0); border-color: #ff3e00; transform: scale(1.02); }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Theme Toggle Switch */
+        .toggle-box { width: 54px; height: 28px; border-radius: 30px; background: #cbd5e1; cursor: pointer; position: relative; }
+        .dark .toggle-box { background: #1e293b; }
+        .toggle-dot { 
+            width: 20px; height: 20px; background: #fff; border-radius: 50%; position: absolute; top: 4px; left: 4px; 
+            transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; align-items: center; justify-content: center;
+        }
+        .dark .toggle-dot { left: 30px; background: #ff3e00; color: white; }
+
+        /* Marquee Background */
+        .marquee-text { white-space: nowrap; display: flex; font-weight: 900; font-size: 8rem; pointer-events: none; opacity: 0.05; }
+        
+        /* Glass Effect */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+        .light .glass-card { background: rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.08); }
+    </style>
+</head>
+<body class="dark">
+
+    <nav class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
+        <div class="text-xl font-black text-accent tracking-tighter">RV</div>
+        
+        <div class="hidden md:flex items-center gap-10">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#contact-info" class="nav-link">Contact</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#message" class="nav-link text-accent">Message Me</a>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <div id="clock" class="text-[9px] tracking-[0.2em] font-bold opacity-50 hidden lg:block">00:00:00</div>
+            <div class="toggle-box" onclick="toggleDarkMode()">
+                <div class="toggle-dot">
+                    <i class="fas fa-moon text-[8px]" id="toggle-icon"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fixed inset-0 z-0 flex flex-col justify-around overflow-hidden select-none">
+        <div class="marquee-text animate-marquee">PATAO BANTAYAN CEBU PATAO BANTAYAN CEBU</div>
+        <div class="marquee-text animate-marquee" style="animation-direction: reverse;">MADRIDEJOS COMMUNITY COLLEGE 3RD YEAR BSIT</div>
+    </div>
+
+    <main class="relative z-10 pt-20">
+        
+        <section id="home" class="h-screen flex flex-col justify-center px-8 lg:px-24">
+            <div data-aos="fade-up">
+                <p class="text-accent font-bold tracking-[0.5em] text-xs mb-4 uppercase">Bantayan Island / MCC BSIT-3</p>
+                <h1 class="text-6xl md:text-[9rem] font-black leading-[0.85] mb-8">RAFAEL VILLACERAN<br><span class="text-transparent" style="-webkit-text-stroke: 1px currentColor;">VILLACERAN</span></h1>
+                <div class="flex gap-4">
+                    <a href="#message" class="px-8 py-4 bg-accent text-white font-bold text-xs uppercase tracking-widest hover:invert transition-all">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-info" class="py-32 px-8 lg:px-24">
+            <div class="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
+                <div class="img-container shadow-2xl" data-aos="fade-right">
+                    <img src="RAFFF.jpg" alt="Rafael Villaceran Profile">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl font-bold mb-8 italic">Contact <span class="text-accent">Hubs</span></h2>
+                    <p class="text-xl font-light mb-10 leading-relaxed">
+                        I am currently stationed in <span class="font-bold underline decoration-accent">Patao, Bantayan, Cebu</span>. As a 3rd-year Information Technology student, I balance academic excellence with community life.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="glass-card p-6 flex items-center gap-6">
+                            <i class="fas fa-phone text-accent"></i>
+                            <div>
+                                <span class="text-[10px] uppercase opacity-50 block font-bold">Mobile</span>
+                                <p class="text-lg font-bold">09073522523</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6">
+                            <i class="fas fa-envelope text-accent"></i>
+                            <div>
+                                <span class="text-[10px] uppercase opacity-50 block font-bold">Email Address</span>
+                                <p class="text-lg font-bold">villaceranrafael@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6">
+                            <i class="fab fa-facebook-f text-accent"></i>
+                            <div>
+                                <span class="text-[10px] uppercase opacity-50 block font-bold">Facebook</span>
+                                <p class="text-lg font-bold">Rafael Villaceran</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-32 px-8 lg:px-24 bg-black/5 dark:bg-white/5">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-black mb-16 italic">Skill <span class="text-accent">Matrix</span></h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in">
+                        <i class="fas fa-basketball-ball text-3xl text-accent mb-6 group-hover:scale-125 transition"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Basketball</h3>
+                    </div>
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-glass-cheers text-3xl text-accent mb-6"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Tagay</h3>
+                    </div>
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-walking text-3xl text-accent mb-6"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Dancing</h3>
+                    </div>
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-volleyball-ball text-3xl text-accent mb-6"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Volleyball</h3>
+                    </div>
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in">
+                        <i class="fas fa-bolt text-3xl text-accent mb-6"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Acrobatic</h3>
+                    </div>
+                    <div class="glass-card p-10 text-center hover:border-accent transition group" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-video text-3xl text-accent mb-6"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase">Tiktokerist</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="message" class="py-32 px-8 lg:px-24">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl font-black mb-12 italic text-center">Message <span class="text-accent">Me</span></h2>
+                <form class="glass-card p-10 space-y-8 shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="relative">
+                            <input type="text" required placeholder="Full Name" class="bg-transparent border-b border-current/20 p-4 outline-none focus:border-accent w-full text-xs font-bold uppercase">
+                        </div>
+                        <div class="relative">
+                            <input type="email" required placeholder="Your Email" class="bg-transparent border-b border-current/20 p-4 outline-none focus:border-accent w-full text-xs font-bold uppercase">
+                        </div>
+                    </div>
+                    <textarea placeholder="Write your message here..." rows="5" class="bg-transparent border-b border-current/20 p-4 outline-none focus:border-accent w-full text-xs font-bold uppercase resize-none"></textarea>
+                    <button class="w-full py-6 bg-accent text-white font-black text-xs tracking-[0.6em] uppercase hover:bg-black dark:hover:bg-white dark:hover:text-black transition-all">Initialize Transfer</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="py-32 text-center border-t border-black/5 dark:border-white/10">
+            <p class="text-3xl md:text-5xl font-black italic mb-6 leading-tight" data-aos="fade-up">“Tagay ngayon, laban ulit bukas.”</p>
+            <p class="text-accent font-bold tracking-[1em] text-[10px] uppercase mb-12" data-aos="fade-up">— Rafael Villaceran</p>
+            <div class="opacity-30 text-[9px] font-bold tracking-[0.5em] uppercase">
+                &copy; 2026 / RAFAEL VILLACERAN / MCC BSIT / PATAO, CEBU
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Functional Dark Mode with Memory
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('toggle-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize Theme preference
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const icon = document.getElementById('toggle-icon');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        })();
+
+        // Live Clock logic
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString('en-GB');
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
